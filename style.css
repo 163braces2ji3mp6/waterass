@@ -1,16 +1,74 @@
 body {
-    background-color: antiquewhite;
+    background-color: rgb(228, 245, 255);
     font-family: Arial, Helvetica, sans-serif;
     margin: 50px;
 }
 
 #level-select {
-    border-radius: 5px;
-    color: rgb(71, 53, 55);
-    background-color: azure;
-    border-color: rgb(255, 214, 248);
+    border-radius: 6px;
+    background: transparent;
+    border: solid rgb(0, 128, 255);
+    border-width: 2.5px;
+    transition: 0.3s;
 }
 
-option {
-    color: aliceblue;
+#level-select:hover {
+    color: white;
+    border-radius: 6px;
+    background: rgb(0, 128, 255);
+    border: solid rgb(0, 128, 255);
+    border-width: 2.5px;
+}
+
+#game {
+    background-color: gainsboro;
+    border: 1px dashed black;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#play {
+    border-radius: 6px;
+    background: transparent;
+    border: solid rgb(0, 128, 255);
+    border-width: 2.5px;
+    transition: 0.3s;
+}
+
+#play:hover {
+    color: white;
+    border-radius: 6px;
+    background: rgb(0, 128, 255);
+    border: solid rgb(0, 128, 255);
+    border-width: 2.5px;
+}
+
+.game-area {
+    background-color: rgb(216, 255, 208);
+    width: 80%;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+}
+
+#gameinfo {
+    background-color: rgb(165, 249, 195);
+    width: 80%;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+}
+
+.tube {
+    width: 50px;
+    height: 200px;
+    border: 2px solid black;
+    border-top: 0px;
+    border-radius: 0 0 25px 25px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: hidden;
+    margin-top: 20;
 }
