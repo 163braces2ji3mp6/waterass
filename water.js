@@ -109,14 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function selectTube(tube) {
         if (selectedTube) {
             if (selectedTube !== tube) {
-                // 嘗試倒水
                 pourWater(selectedTube, tube);
             }
-            // 不管倒水成功與否，取消原本選擇
             selectedTube.classList.remove("selected");
             selectedTube = null;
         } else {
-            // 選擇新的管
             selectedTube = tube;
             tube.classList.add("selected");
         }
