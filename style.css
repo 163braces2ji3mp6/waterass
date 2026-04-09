@@ -28,7 +28,7 @@ body {
     margin-bottom: 20px;
 }
 
-#play {
+#play,button {
     border-radius: 6px;
     background: transparent;
     border: solid rgb(0, 128, 255);
@@ -37,7 +37,7 @@ body {
     transition: 0.3s;
 }
 
-#play:hover {
+#play:hover,button:hover {
     color: white;
     border-radius: 6px;
     background: rgb(0, 128, 255);

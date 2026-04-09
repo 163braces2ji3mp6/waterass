@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('game-board');
     const playButton = document.getElementById('play');
     const levelSelect = document.getElementById('level-select');
+    const returnt = document.getElementById('return');
+    const history = [];
 
     const colors = [
       "red",
@@ -28,6 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const tubes = [];
     let selectedTube = null;
     let levelCount = 1;
+
+    function saveState() {
+        history.push(
+            tubes.map(tube=>Array.from(tube.children).map(w => w.style.backgroundColor))
+        );
+    }
+    /*/history.push(
+        tubes.map(tube=>Array.from(tube.children).map(w => w.style.backgroundColor))
+    );/*/
 
     function chooseLevel(level){
         levelCount = level;
@@ -79,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function pourWater(fromTube, toTube) {
+        saveState();
         let fromWater = fromTube.querySelector(".water:last-child");
         let toWater = toTube.querySelector(".water:last-child");
 
@@ -102,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fromWater = fromTube.querySelector(".water:last-child");
                 toWater = toTube.querySelector(".water:last-child");
             }
+            
         }
         checkGameState();
     }
@@ -120,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createTubes(){
+        history.length = 0;
         gameBoard.innerHTML = "";
         tubes.length = 0;
 
@@ -166,10 +180,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
+    
     playButton.addEventListener('click', () => {
         tubes.length = 0;
         createTubes();
         fillTubes();
+    });
+
+    returnt.addEventListener('click', () => {
+        if (history.length === 0) return;
+
+        const prevState = history.pop();
+
+        tubes.forEach(tube => tube.innerHTML = '');
+
+        prevState.forEach((tubeState,index)=>{
+            tubeState.forEach(color=>{
+                const water = document.createElement('div');
+                water.classList.add('water')
+                water.style.backgroundColor = color;
+                water.style.height = '20%';
+                tubes[index].appendChild(water)
+            })
+        });    
     });
 });
